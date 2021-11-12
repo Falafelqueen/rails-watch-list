@@ -1,28 +1,37 @@
- <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 500, crop: :fill %>')">
+ <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 500, crop: :fill %>'); background-repeat:no-repeat; background-size:cover">
+ <div class="container">
     <h1><%= @list.name %></h1>
+    <%= link_to edit_list_path(@list) do %>
+      <i class="fas fa-edit edit"></i>
+    <% end %>
+ </div>
   </div>
 <div class="container">
   <div class="card-holder">
-  <% @list.movies.each do |movie|%>
-  <% bookmark = Bookmark.find_by(list: @list, movie: movie ) %>
-    <div class="card">
-     <%= image_tag movie.poster_url %>
-      <div class="card-info">
-        <div class="card-desc">
-          <h2><%= movie.title %></h2>
-          <p><%= movie.overview %></p>
-        </div>
-        <div class="card-actions">
-          <div class="comment-holder">
-          <img src="" alt="" class="user-icon">
-          <p><%= bookmark.comment %></p>
+    <% @list.movies.each do |movie|%>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie ) %>
+      <div class="card">
+        <%= image_tag movie.poster_url %>
+        <div class="card-info">
+          <div class="card-desc">
+            <h2><%= movie.title %></h2>
+            <p><%= movie.overview %></p>
           </div>
-          <button class="btn btn-delete"><%= link_to "Delete", bookmark_path(bookmark), method: :delete %></button>
+          <div class="card-actions">
+            <div class="comment-holder">
+            <img src="" alt="" class="user-icon">
+            <p><%= bookmark.comment %></p>
+            <%= link_to bookmark_path(bookmark), method: :delete do%>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-      <% end %>
+    <% end %>
   </div>
-    <button class="btn btn-back"><%= link_to "Back", lists_path %></button>
-    <button class="btn btn-new"><%= link_to "Create bookmark", new_list_bookmark_path(@list) %></button>
+    <%= link_to lists_path do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
+    <button class="btn btn-new"><%= link_to "Add movie", new_list_bookmark_path(@list) %></button>
 </div>
