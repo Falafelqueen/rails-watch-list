@@ -1,0 +1,19 @@
+<div class="nav-bar">
+  <img src="" alt="" class="logo">
+  <h1></h1>
+  <div class="search-form"></div>
+</div>
+<div class="container">
+  <div class="banner">
+  <h1>My lists</h1>
+  </div>
+  <div class="list-holder">
+    <div class="list-card">
+    <% @lists.each do |list| %>
+      <%# <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %> %>
+      <h2><%= link_to list.name, list_path(list) %></h2>
+    </div>
+    <% end %>
+  </div>
+  <button><%= link_to "Create new list", new_list_path %></button>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="category-banner">
+    <h1><%= @list.name %></h1>
+  </div>
+  <div class="card-holder">
+  <% @list.movies.each do |movie|%>
+  <% bookmark = Bookmark.find_by(list: @list, movie: movie ) %>
+    <div class="card">
+      <img src="<%= movie.poster_url%>" alt="">
+      <div class="card-info">
+        <div class="card-desc">
+          <h2><%= movie.title %></h2>
+          <p><%= movie.overview %></p>
+        </div>
+        <div class="card-actions">
+          <div class="comment-holder">
+          <img src="" alt="" class="user-icon">
+          <p><%= bookmark.comment %></p>
+          </div>
+          <button class="btn btn-delete"><%= link_to "Delete", bookmark_path(bookmark), method: :delete %></button>
+        </div>
+      </div>
+    </div>
+      <% end %>
+    <button class="btn btn-back"><%= link_to "Back", lists_path %></button>
+    <button class="btn btn-new"><%= link_to "Create bookmark", new_list_bookmark_path(@list) %></button>
+  </div>
+</div>
