@@ -1,0 +1,7 @@
+<h1>Update your list</h1>
+<%= simple_form_for @list do |f| %>
+  <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit %>
+<% end %>
+<button class="btn btn-back"><%= link_to "Back", lists_path %></button>
