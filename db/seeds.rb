@@ -16,7 +16,7 @@ Movie.destroy_all
 url = "http://tmdb.lewagon.com/movie/top_rated"
 
 puts "Creating ..."
-50.times do |i|
+100.times do |i|
   movies = JSON.parse(URI.open("#{url}?page=#{i + 1}").read)['results']
   movies.each do |movie|
     base_poster_url = "https://image.tmdb.org/t/p/original"

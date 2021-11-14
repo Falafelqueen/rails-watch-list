@@ -193,6 +193,8 @@ GEM
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
+    simplebar-rails (2.6.1)
+      railties (>= 3.1)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -248,6 +250,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (>= 6)
   simple_form
+  simplebar-rails
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

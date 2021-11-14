@@ -15,7 +15,9 @@
         <div class="card-info">
           <div class="card-desc">
             <h2><%= movie.title %></h2>
-            <p><%= movie.overview %></p>
+            <div class="card-overflow">
+              <p><%= movie.overview %></p>
+            </div>
           </div>
           <div class="card-actions">
             <div class="comment-holder">
@@ -30,8 +32,8 @@
     </div>
     <% end %>
   </div>
+</div>
     <%= link_to lists_path do %>
       <i class="fas fa-arrow-left"></i>
     <% end %>
     <button class="btn btn-new"><%= link_to "Add movie", new_list_bookmark_path(@list) %></button>
-</div>
